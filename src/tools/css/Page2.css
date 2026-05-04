@@ -1,0 +1,69 @@
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+  position: relative;
+}
+
+.step-number {
+  min-width: 40px;
+  height: 40px;
+  background: var(--accent);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.step-icon {
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.step-text h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.step-text p {
+  font-size: 13px;
+  color: #999;
+}
+
+.wifi-info {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 16px 20px;
+  font-size: 13px;
+}
+
+.wifi-info p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.wifi-info strong {
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .step-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
