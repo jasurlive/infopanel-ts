@@ -132,7 +132,7 @@ export default function App() {
       <div className="single-container">
   <div className="single-card">
 
-    {page.type === "info" && (
+    {page.type === "info" && page.icon && (
       <>
         <h1 className="page-title">{page.title}</h1>
         <page.icon className="card-icon" />
