@@ -1,46 +1,26 @@
-import { FaClock, FaMapPin, FaTrain } from 'react-icons/fa';
-import '../css/Header.css';
+import { FaClock, FaMapMarkerAlt, FaTrain } from 'react-icons/fa'
+import { TbTrainFilled } from 'react-icons/tb'
+import { train } from '../lib/content'
+import { useClock } from '../hooks/LOCAL/useClock'
 
-interface HeaderProps {
-  routeNumber?: string;
-  carNumber?: string;
-  nextStation?: string;
-}
+export default function Header() {
+  const time = useClock()
 
-function Header({ 
-  routeNumber = "ICE 207", 
-  carNumber = "Car 5",
-  nextStation = "Berlin Hauptbahnhof"
-}: HeaderProps) {
-  const currentTime = new Date().toLocaleTimeString('de-DE', { 
-    hour: '2-digit', 
-    minute: '2-digit' 
-  });
+  const items = [
+    { icon: FaTrain, value: train.name },
+    { icon: TbTrainFilled, value: train.car },
+    { icon: FaClock, value: time },
+    { icon: FaMapMarkerAlt, value: train.next },
+  ]
 
   return (
     <header className="header">
-      <div className="header-row">
-        <div className="header-item">
-          <FaTrain className="header-icon" />
-          <span className="header-label">Route</span>
-          <span className="header-value">{routeNumber}</span>
+      {items.map(({ icon: Icon, value }, i) => (
+        <div key={i} className="header-item">
+          <Icon className="header-icon" />
+          <span className="header-value">{value}</span>
         </div>
-        <div className="header-item">
-          <span className="header-label">Car</span>
-          <span className="header-value">{carNumber}</span>
-        </div>
-        <div className="header-item">
-          <FaClock className="header-icon" />
-          <span className="header-value time">{currentTime}</span>
-        </div>
-        <div className="header-item">
-          <FaMapPin className="header-icon" />
-          <span className="header-label">Next</span>
-          <span className="header-value">{nextStation}</span>
-        </div>
-      </div>
+      ))}
     </header>
-  );
+  )
 }
-
-export default Header;

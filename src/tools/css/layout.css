@@ -1,0 +1,110 @@
+/* kiosk screen: fills any display, never scrolls. sizes scale with the screen (vmin) */
+
+body {
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: url('/bg.jpg') center / cover no-repeat;
+}
+
+.layout {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 2vmin;
+  padding-top: 2vmin;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(79, 140, 255, 0.35), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(120, 180, 255, 0.25), transparent 45%),
+    rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px) saturate(160%);
+}
+
+.layout-page {
+  display: grid;
+  min-height: 0;
+  padding: 0 2vmin;
+}
+
+/* shared glass look */
+.header,
+.marquee,
+.home-card {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+}
+
+/* ---------- header ---------- */
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
+  gap: 1vmin 3vmin;
+  margin: 0 2vmin;
+  padding: 1.5vmin 2.5vmin;
+  border-radius: 2vmin;
+  font-size: clamp(14px, 3vmin, 34px);
+}
+
+.header-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  min-width: 0;
+}
+
+.header-icon {
+  flex-shrink: 0;
+  font-size: 1.8em;
+  color: var(--accent);
+}
+
+.header-value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-aspect-ratio: 1 / 1) {
+  .header { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- marquee ---------- */
+
+.marquee {
+  overflow: hidden;
+  padding: 1.8vmin 0;
+  border-width: 1px 0 0;
+  font-size: clamp(18px, 4.5vmin, 52px);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding-right: 1em;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+.marquee-item::after {
+  content: '';
+  width: 0.15em;
+  height: 0.15em;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}

@@ -1,0 +1,14 @@
+/* ---------- theme tokens ---------- */
+/* reset.css and page.css read these names */
+
+:root {
+  --bg: #e8f1ff;
+  --panel: rgba(241, 246, 255, 0.25);
+  --surface: var(--panel);
+  --border: rgba(120, 160, 255, 0.25);
+  --accent: #4f8cff;
+  --text: #1c3967;
+  --text-strong: #1c3967;
+  --muted: #1b3662;
+  --danger: #dc2626;
+}

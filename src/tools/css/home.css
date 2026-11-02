@@ -1,0 +1,45 @@
+/* one slide: fills the space between header and ticker, shrinks the icon / video first */
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3vmin;
+  min-height: 0;
+  padding: 3vmin;
+  overflow: hidden;
+  border-radius: 2vmin;
+  text-align: center;
+}
+
+.home-title {
+  font-size: clamp(20px, 6vmin, 68px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.home-icon,
+.home-video {
+  flex: 0 1 auto;
+  min-height: 0;
+}
+
+.home-icon {
+  width: 100%;
+  height: 28vmin;
+  color: var(--accent);
+}
+
+.home-video {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5vmin;
+  object-fit: cover;
+}
+
+.home-text {
+  font-size: clamp(16px, 5.2vmin, 60px);
+  line-height: 1.3;
+  color: var(--muted);
+}
